@@ -81,6 +81,31 @@ public class JavaExercise {
             System.out.println("Baga un integer data viitoare fa ");
         }
 
+        System.out.print("Exercitiul 2: ");
+        System.out.print("Pentru cate numere sa va fac o medie?_");
+
+        Scanner nNumere=new Scanner(System.in);
+        int n = nNumere.nextInt(); double result =0;
+
+        System.out.println("acum va rog sa introduceti cele " + n + " numere");
+
+        int a[]=new int[n];
+
+        for(int i=0;i<n;i++)
+            a [i]=nNumere.nextInt();
+
+        for(int i=0;i<n;i++)
+            result =result+a[i];
+
+
+        System.out.println("Media aritmetica este "  + result/n );
+
+
+
+
+
+
+
 
 
 
