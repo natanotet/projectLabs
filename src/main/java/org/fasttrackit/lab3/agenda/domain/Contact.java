@@ -1,6 +1,8 @@
 package org.fasttrackit.lab3.agenda.domain;
 
+
 public class Contact {
+
 
     private String firstName;
 
@@ -8,36 +10,39 @@ public class Contact {
 
     private String phone;
 
-    private String adress;
+    private String address;
 
-    public Contact () {
+
+    public Contact() {
         super();
         phone="";
     }
 
-    public Contact (String firstNameParam, String lastNameParam) {
-        super ();
-        this ();
+    public Contact(String firstNameParam, String lastNameParam){
+        this();
         this.firstName = firstNameParam;
         this.lastName = lastNameParam;
+    }
 
+    public Contact(String fisrtN, String ln, String ad) {
+        this(fisrtN,ln);
+        this.address = ad;
     }
 
 
-
-
-    public void setFirstName (String firstNameParam) {
-
-        if(firstNameParam.equals("")) {
-            throw new IllegalArgumentException("First name" + "Cannot be empty");
+    public void setFirstName(String firstNameParam) {
+        //valida
+        if (firstNameParam.equals("")) {
+            throw new IllegalArgumentException("First name " +
+                    "cannot be empty");
         }
         this.firstName = firstNameParam;
     }
 
-    public String getFirstName () {
+    public String getFirstName() {
         return this.firstName;
-
     }
+
 
     public String getLastName() {
         return lastName;
@@ -55,23 +60,39 @@ public class Contact {
         this.phone = phone;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String toString () {
+    public String toString() {
+        return "First name is: " + firstName +
+                " and last name is: " + lastName;
+    }
+//
+//    public boolean equals(Object c) {
+//        return false;
+//    }
 
-        return "First name is:" + firstName + "and last name is: " + lastName;
+
+    @Override
+    public boolean equals(Object o) {
+        Contact second = (Contact) o;
+        if (second.getFirstName().equals(this.firstName) &&
+                second.getLastName().equals(this.getLastName())
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
-
-
-
-
-
-
+    @Override
+    public int hashCode() {
+        return firstName != null ? firstName.hashCode() : 0;
+    }
 }

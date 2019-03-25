@@ -3,40 +3,45 @@ package org.fasttrackit.lab3.agenda.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Agenda {
 
     private String nameAgenda;
     private String owner;
+    private Contact[] contacts = new Contact[20];
+
     private List<Contact> contactList = new ArrayList<Contact>();
 
 
-    public static void main(String args []) {
+    public static void main(String args[]) {
 
+        Agenda agenda = new Agenda();
 
-        Agenda agenda = new Agenda;
+        Contact contact0 = new Contact("Vasile","muresan");
+        Contact contact01 = new Contact("Vasile","muresan","str ion agarbi");
 
-        Contact contact0 = new Contact ("vasile", "muresan");
+        Contact firstContact = new Contact();
+        firstContact.setLastName("Pop");
+        firstContact.setFirstName("Costel");
+        System.out.println(firstContact.toString());
 
+        agenda.getContactList().add(firstContact);
 
-         Contact firstContact = new Contact ();
-         firstContact.setFirstName("Costel");
-         firstContact.setLastName("Pop");
+        agenda.contacts[0]= firstContact;
 
-         agenda.getContactList().add(firstContact);
-         System.out.println(firstContact.toString());
-
-
-        Contact secondContact = new Contact ();
-        secondContact.setFirstName("Ana");
+        Contact secondContact = new Contact();
         secondContact.setLastName("Pop");
-
+        secondContact.setFirstName("Ana");
+        System.out.println(secondContact.toString());
         agenda.getContactList().add(secondContact);
+        agenda.contacts[1] = secondContact;
 
-        System.out.println(secondContact.toString());
+
+        System.out.println("check equals with == "+(secondContact==firstContact));
+        System.out.println("check equals with equals "+(secondContact.equals(firstContact)));
 
 
-        System.out.println(secondContact.toString());
-        System.out.println("check equals with == " + (secondContact==firstContact));
+
 
     }
 
@@ -64,4 +69,3 @@ public class Agenda {
         this.contactList = contactList;
     }
 }
-
